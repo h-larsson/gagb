@@ -9,7 +9,18 @@ xa = fi["xa"]
 xb = fi["xb"]
 ga = fi["ga"]
 gb = fi["gb"]
+ga = np.array(ga)
+gb = np.array(gb)
+def orthMatAdjustSign(uv:np.ndarray):
+    """ Make sure that in each column of the matrix `uv` the entry with largest absolute value has positive sign. """
+    for i in range(uv.shape[1]):
+        uv[:, i] *= np.sign(uv[np.argmax(np.abs(uv[:, i])), i])
+    return uv
+orthMatAdjustSign(ga)
+orthMatAdjustSign(gb)
+
 ket = lambda a,b: np.kron(ga[:,a],gb[:,b]).reshape(len(xa),len(xb))
+
 def plot(z):
     interpolate = True
     if interpolate: 
@@ -56,4 +67,4 @@ def plot(z):
 
 
 
-plot(ket(2,1))
+plot(ket(2,0)+ket(0,2))
