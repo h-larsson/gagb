@@ -139,7 +139,7 @@ def calculate_polar_z(z, xa, xb):
     r_min = np.min(r)
     r_max = np.max(r)
     r = np.linspace(r_min,r_max,N)
-    #calculating the range on phi has rounding issues at 0, instead set range on phi to be pi
+    #calculating the range on phi has rounding issues at 0, instead set range on phi to be [0,pi]
     phi = np.linspace(0,np.pi,N)
     #define new R and Phi for interpolating z
     R, Phi = np.meshgrid(r,phi)
