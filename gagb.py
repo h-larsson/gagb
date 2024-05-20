@@ -230,8 +230,8 @@ def calculate_and_plot_cart_and_polar(z):
     OUTS:
     matplotlib figure
     """
-    x, y, z1 = calculate_cart_z(z, xa, xb)
-    R, Phi, z2 = calculate_polar_z(z, xa_pol, xb_pol)
+    z1, x, y = calculate_cart_z(z, xa, xb)
+    z2, R, Phi = calculate_polar_z(z, xa_pol, xb_pol)
     plot_cart_and_polar(x, y, z1, R, Phi, z2)
 
 
