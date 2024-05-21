@@ -83,7 +83,7 @@ def calculate_cart_z(z, xa, xb):
     y = np.linspace(np.min(xb),np.max(xb),N)
     x,y = np.meshgrid(x,y)
     z = interp((x,y))
-    return x, y, z
+    return z, x, y
 
 #center the wavefunction to be at the origin
 def center_wavefunction_axis(x):
@@ -147,7 +147,7 @@ def calculate_polar_z(z, xa, xb):
     x = R*np.cos(Phi)
     y = R*np.sin(Phi)
     z = interp((x,y))
-    return R, Phi, z
+    return z, R, Phi
 
 def plot_contour(fig, ax, x, y, z):
     """
@@ -230,8 +230,8 @@ def calculate_and_plot_cart_and_polar(z):
     OUTS:
     matplotlib figure
     """
-    x, y, z1 = calculate_cart_z(z, xa, xb)
-    R, Phi, z2 = calculate_polar_z(z, xa_pol, xb_pol)
+    z1, x, y = calculate_cart_z(z, xa, xb)
+    z2, R, Phi = calculate_polar_z(z, xa_pol, xb_pol)
     plot_cart_and_polar(x, y, z1, R, Phi, z2)
 
 
